@@ -4,8 +4,8 @@ import time
 import os
 
 # ===== БЕРЁМ ДАННЫЕ ИЗ ПЕРЕМЕННЫХ ОКРУЖЕНИЯ =====
-VK_TOKEN = os.getenv("VK_TOKEN")
-GROUP_ID = int(os.getenv("GROUP_ID", 0))
+VK_TOKEN = "vk1.a.2_7nA3gvjyhXp1pC_wQbSMxQ2Zq1X1dt1Xo2pni4GCIsfYBPcRgiqTlfTDi8Uk7Wx8CmFR_SGQNhS1zju_HfnYm_XjY3c4G6icu976fDBLcHk5fYQOeNCULDnEIY_4rZGq_VF8XFp957HRJP_88f6_ZLKHRcrG4IHMvuwVPGaNR7qLho2ugE67sd6dqQ-qxtmnzCUdDCGOdmz9rLBrBYgA"
+GROUP_ID = 238085810
 # =================================================
 
 def start_bot():
