@@ -4,12 +4,13 @@ import time
 import os
 
 # ===== БЕРЁМ ДАННЫЕ ИЗ ПЕРЕМЕННЫХ ОКРУЖЕНИЯ =====
-VK_TOKEN = "vk1.a.z7lgXIxPCAplfB6ZwY4Ide2JSt3xxZWtQO4thdLEmjZNem5Bas6Dbg9RqsDPqTmjXwkdhfbv0ziC6-M-0VUKBZdED0amuqRJwOl4jY8-SRYbJVc9e2LbrX5jqZzsxJAXHrIlsZxxDH_DFtYGhIb7Kl_tQbLISMSQWU2HnCIIIQe6ewv5dsqFiUOGGp71FMnpQyYN3lqEP4zV8x4ShVbAAw"
+VK_TOKEN = os.getenv("vk1.a.z7lgXIxPCAplfB6ZwY4Ide2JSt3xxZWtQO4thdLEmjZNem5Bas6Dbg9RqsDPqTmjXwkdhfbv0ziC6-M-0VUKBZdED0amuqRJwOl4jY8-SRYbJVc9e2LbrX5jqZzsxJAXHrIlsZxxDH_DFtYGhIb7Kl_tQbLISMSQWU2HnCIIIQe6ewv5dsqFiUOGGp71FMnpQyYN3lqEP4zV8x4ShVbAAw")
 GROUP_ID = 238085810
 # =================================================
 
 def start_bot():
-    vk_session = vk_api.VkApi(token=VK_TOKEN)
+    # ЯВНО УКАЗЫВАЕМ ВЕРСИЮ API
+    vk_session = vk_api.VkApi(token=VK_TOKEN, api_version='5.199')
     vk = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
     print("✅ Бот запущен! Жду сообщений...")
@@ -17,11 +18,12 @@ def start_bot():
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
             msg = event.text.lower().strip()
+            print(f"📩  Получено сообщение: {msg}")
 
             if "удача" in msg:
                 vk.messages.send(
                     user_id=event.user_id,
-                    message="Здравствуйте!\n\nДля того чтобы стать участником акций и получить шанс выиграть желанный приз, необходимо приобрести постер из списка товаров\n\nИНСТРУКЦИЯ:\n\n1) ПРИОБРЕТИ ПОСТЕР ✅\nПереходи по ссылке и совершай оплату по СБП https://auth.robokassa.ru/merchant/Invoice/TNsGiM9VCk6ulRArMw4Dug\n\n‼ВНИМАНИЕ‼\nОПЛАТА ПРОХОДИТ С ЛЮБЫХ БАНКОВ.\n📌 Подписывайтесь на наш Телеграм-канал, чтобы быть в курсе всех новостей https://t.me/ydachanabaikale\n\n2) ПОСЛЕ ОПЛАТЫ отправь нам чек, название или фото товара, ФИО, номер телефона участника 🤝 \n3) Менеджер отправит вам номер с постером\n4) МОЖНО КУПИТЬ НЕОГРАНИЧЕННОЕ КОЛИЧЕСТВО ПОСТЕРОВ. Больше постеров = больше шансов.\n\nГотово! В течение 24 часов наши менеджеры внесут Вас в список участников акции и отправят постер 🔥 \n\nИТОГИ АКЦИИ ПОДВЕДЕМ В ПРЯМОМ ЭФИРЕ когда будут проданы все постеры 😎 \n\nПобедителя выберет генератор случайных чисел.\n\nЕсли нужна будет помощь, пиши! Мы на связи 😉 ",
+                    message="Здравствуйте!\n\nДля того чтобы стать участником акций и получить шанс выиграть желанный приз, необходимо приобрести постер из списка товаров\n\nИНСТРУКЦИЯ:\n\n1) ПРИОБРЕТИ ПОСТЕР ✅\nПереходи по ссылке и совершай оплату по СБП https://auth.robokassa.ru/merchant/Invoice/TNsGiM9VCk6ulRArMw4Dug\n\n‼ВНИМАНИЕ‼\nОПЛАТА ПРОХОДИТ С ЛЮБЫХ БАНКОВ.\n📌  Подписывайтесь на наш Телеграм-канал, чтобы быть в курсе всех новостей https://t.me/ydachanabaikale\n\n2) ПОСЛЕ ОПЛАТЫ отправь нам чек, название или фото товара, ФИО, номер телефона участника 🤝  \n3) Менеджер отправит вам номер с постером\n4) МОЖНО КУПИТЬ НЕОГРАНИЧЕННОЕ КОЛИЧЕСТВО ПОСТЕРОВ. Больше постеров = больше шансов.\n\nГотово! В течение 24 часов наши менеджеры внесут Вас в список участников акции и отправят постер 🔥  \n\nИТОГИ АКЦИИ ПОДВЕДЕМ В ПРЯМОМ ЭФИРЕ когда будут проданы все постеры 😎  \n\nПобедителя выберет генератор случайных чисел.\n\nЕсли нужна будет помощь, пиши! Мы на связи 😉 ",
                     random_id=0
                 )
 
