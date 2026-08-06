@@ -4,7 +4,7 @@ import time
 import os
 
 # ===== БЕРЁМ ДАННЫЕ ИЗ ПЕРЕМЕННЫХ ОКРУЖЕНИЯ =====
-VK_TOKEN = os.getenv("vk1.a.z7lgXIxPCAplfB6ZwY4Ide2JSt3xxZWtQO4thdLEmjZNem5Bas6Dbg9RqsDPqTmjXwkdhfbv0ziC6-M-0VUKBZdED0amuqRJwOl4jY8-SRYbJVc9e2LbrX5jqZzsxJAXHrIlsZxxDH_DFtYGhIb7Kl_tQbLISMSQWU2HnCIIIQe6ewv5dsqFiUOGGp71FMnpQyYN3lqEP4zV8x4ShVbAAw")
+VK_TOKEN = "vk1.a.z7lgXIxPCAplfB6ZwY4Ide2JSt3xxZWtQO4thdLEmjZNem5Bas6Dbg9RqsDPqTmjXwkdhfbv0ziC6-M-0VUKBZdED0amuqRJwOl4jY8-SRYbJVc9e2LbrX5jqZzsxJAXHrIlsZxxDH_DFtYGhIb7Kl_tQbLISMSQWU2HnCIIIQe6ewv5dsqFiUOGGp71FMnpQyYN3lqEP4zV8x4ShVbAAw"
 GROUP_ID = 238085810
 # =================================================
 
