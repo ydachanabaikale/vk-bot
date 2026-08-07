@@ -1,1 +1,2 @@
+--index-url https://mirrors.aliyun.com/pypi/simple/
 vk-api
