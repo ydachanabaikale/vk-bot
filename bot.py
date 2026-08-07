@@ -1,21 +1,10 @@
-import subprocess
-import sys
-import os
-
-# ===== АВТОУСТАНОВКА VK-API =====
-try:
-    import vk_api
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "vk-api"])
-    import vk_api
-
+import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 import time
+import os
 
-# ===== БЕРЁМ ДАННЫЕ ИЗ ПЕРЕМЕННЫХ ОКРУЖЕНИЯ =====
 VK_TOKEN = os.getenv("vk1.a.z7lgXIxPCAplfB6ZwY4Ide2JSt3xxZWtQO4thdLEmjZNem5Bas6Dbg9RqsDPqTmjXwkdhfbv0ziC6-M-0VUKBZdED0amuqRJwOl4jY8-SRYbJVc9e2LbrX5jqZzsxJAXHrIlsZxxDH_DFtYGhIb7Kl_tQbLISMSQWU2HnCIIIQe6ewv5dsqFiUOGGp71FMnpQyYN3lqEP4zV8x4ShVbAAw")
 GROUP_ID = int(os.getenv("238085810", 0))
-# =================================================
 
 def start_bot():
     vk_session = vk_api.VkApi(token=VK_TOKEN, api_version='5.199')
@@ -26,7 +15,7 @@ def start_bot():
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
             msg = event.text.lower().strip()
-            print(f"📩 Получено сообщение: {msg}")
+            print(f"📩 Получено: {msg}")
 
             if "удача" in msg:
                 vk.messages.send(
@@ -35,7 +24,6 @@ def start_bot():
                     random_id=0
                 )
 
-# ===== АВТОМАТИЧЕСКИЙ ПЕРЕЗАПУСК =====
 while True:
     try:
         start_bot()
